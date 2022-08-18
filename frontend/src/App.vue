@@ -12,9 +12,9 @@
     </form>
     <table class="table">
       <thead>
-        <th>Name</th>
-        <th>Course</th>
-        <th>Rating</th>
+        <th>Name:</th>
+        <th>Course:</th>
+        <th>Rating:</th>
       </thead>
       <tbody>
         <tr v-for="student in students" :key="student.id">
