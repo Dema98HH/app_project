@@ -1,5 +1,19 @@
+
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <h1>Here is a child component!</h1>
+  <ButtonCounter />
+
 </template>
+
+
+<script>
+
+import ButtonCounter from '/home/dema/PycharmProjects/app/frontend/src/components/HelloWorld.vue'
+  
+export default {
+  components: {
+    ButtonCounter
+  }
+}
+</script>
