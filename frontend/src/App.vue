@@ -1,42 +1,11 @@
 <template>
   <div id="app">
-
-    <form @submit.prevent="submitForm">
-      <div class="form-group row">
-        <input type="text" class="form-control col-3 mx-2" placeholder="Name" v-model="student.name">
-        <input type="text" class="form-control col-3 mx-2" placeholder="Course" v-model="student.course">
-        <input type="text" class="form-control col-3 mx-2" placeholder="Rating" v-model="student.rating">
- <!--   <input v-model="geeting" />-->   
-        <button class="btn btn-success">Submit</button>
-      </div>
-    </form>
-    <table class="table">
-      <thead>
-        <th>Name:</th>
-        <th>Course:</th>
-        <th>Rating:</th>
-      </thead>
-      <tbody>
-        <tr v-for="student in students" :key="student.id" @dblclick="$data.student = student">
-          <td>{{ student.name }}</td>
-          <td>{{ student.course }}</td>
-          <td>{{ student.rating }}</td>
-          <td>
-            <button class="btn btn-outline-danger btn-sm mx-1" @click="deleteStudent(student)">x</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
-
   <div>
     <nav>
-      <router-link to="/about">About | </router-link>
-      <router-link to="/about">About | </router-link>
-      <router-link to="/about">About | </router-link>
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home | </router-link>
+      <router-link to="/about">About </router-link>
     </nav>
+  </div>
   </div>
   <router-view/>
 </template>
