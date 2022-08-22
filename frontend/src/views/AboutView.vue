@@ -4,7 +4,7 @@
   <h1>Here is a child component!</h1>
   <textarea type="text" v-model="text" />
   <button @click="send()">Click me!</button>
-  <Child :message='message' class="mt-10"></Child>
+  <Child :mesage='messag' class="mt-10"></Child>
 </template>
   <Child />
 
@@ -19,8 +19,8 @@ export default {
   },
 
   methods: {
-    send(){
-      this.message = this.text
+    async send(){
+      this.messag = this.text
       this.text = ''
     },
   },
@@ -28,7 +28,7 @@ export default {
   data(){
     return{
       text: '',
-      message: '',
+      messag: '',
     }
   }
 }

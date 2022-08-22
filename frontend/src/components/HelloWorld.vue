@@ -3,7 +3,7 @@
     You clicked me {{ count }} times.
   </button>
   <div>
-    Received: {{message}}
+    Received: {{mesage}}
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
     }
   },
 
-props: ['message']
+props: ['mesage']
 
 }
 </script>
