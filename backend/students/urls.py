@@ -14,7 +14,9 @@ from .views import *
 
 
 urlpatterns = [
-    path('latest-products/', views.LatestProductsList.as_view())
+    path('latest-products/', views.LatestProductsList.as_view()),
+    path('students/', views.StundentsList.as_view()),
+
 ]
 
 

@@ -25,6 +25,14 @@ class ProductSerializer(ModelSerializer):
             "get_thumbnail"
         )
 
+class StudentsSerializer(ModelSerializer):
+    class Meta:
+        model = Stundent
+        fields = (
+            "name",
+            "course",
+            "rating"
+        )
 
 
 
