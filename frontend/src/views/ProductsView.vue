@@ -5,13 +5,23 @@
     <div class="column is-12">
         <h2 class="is-size-2 has-text-centered">Latest products</h2>
     </div>
-    <div class="column is-3"
+    <div class="row">
+    <div class="col-3 card p-2 m-2"
      v-for="product in latestProducts"
      v-bind:key="product.id"
     >
-    <div class="box">
-        <h2>{{ product.name }}</h2>
-    </div>
+
+        <div>
+            <div>
+                <figure>
+                <img :src="product.get_thumbnail">
+                </figure>
+                <h3>{{ product.name }}</h3>
+                <p>${{ product.price }}</p>
+            </div>
+        </div>
+
+  </div>
   </div>
   </div>
 </template>

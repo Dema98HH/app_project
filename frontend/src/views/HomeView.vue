@@ -3,9 +3,9 @@
 
     <form @submit.prevent="submitForm">
       <div class="form-group row">
-        <input type="text" class="form-control col-3 mx-2" placeholder="Name" v-model="students.name">
-        <input type="text" class="form-control col-3 mx-2" placeholder="Course" v-model="students.course">
-        <input type="text" class="form-control col-3 mx-2" placeholder="Rating" v-model="students.rating">
+        <input type="text" class="form-control col-3 mx-2" placeholder="Name" v-model="student.name">
+        <input type="text" class="form-control col-3 mx-2" placeholder="Course" v-model="student.course">
+        <input type="text" class="form-control col-3 mx-2" placeholder="Rating" v-model="student.rating">
  <!--   <input v-model="geeting" />-->   
         <button class="btn btn-success">Submit</button>
       </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 import HelloWorld from '@/components/HelloWorld.vue'
 
 
@@ -46,24 +46,75 @@ export default {
     HelloWorld
   },
 
-  data() {
+  data(){
     return {
+      student: {},
       students: []
     }
   },
-  components: {
-  },
-  mounted() {
-      this.getLStudents()
-  },
-  methods: {
-      getLStudents() {
-          axios({
-              method:'get',
-              url: 'http://127.0.0.1:8000/api/students/',
 
-          }).then(response => this.students = response.data);
+  async created(){
+    await this.getStudents();
+  },
+
+  methods: {
+
+    submitForm(){
+      if (this.student.id === undefined){
+        this.createStudent();
+
+      } else {
+        this.editStudent();
       }
+    },
+    async getStudents(student){
+      var response = await fetch('http://127.0.0.1:8000/api/students/')
+
+      this.students = await response.json();
+    },
+
+    async createStudent() {
+      await this.getStudents()
+
+      await fetch('http://127.0.0.1:8000/api/students/', {
+        method: 'post',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(this.student)
+      });
+
+      await this.getStudents()
+    },
+    async editStudent(){
+      await this.getStudents()
+
+      await fetch(`http://127.0.0.1:8000/api/students/${this.student.id}/`, {
+        method: 'put',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(this.student)
+      });
+
+      await this.getStudents(),
+      this.student = {}
+    },
+
+    async deleteStudent(student){
+      await this.getStudents()
+
+      await fetch(`http://127.0.0.1:8000/api/students/${student.id}/`, {
+        method: 'delete',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(this.student)
+      });
+
+      await this.getStudents();
+    }
+
   }
 }
 </script>
